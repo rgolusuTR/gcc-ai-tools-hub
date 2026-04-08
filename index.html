@@ -39,6 +39,20 @@
         --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
       }
 
+      /* Fix dropdown text visibility in light theme */
+      [data-theme="light"] .theme-dropdown {
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+      }
+
+      [data-theme="light"] .theme-option {
+        color: #1a1a1a;
+      }
+
+      [data-theme="light"] .theme-option:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
       /* Ocean Theme */
       [data-theme="ocean"] {
         --primary-color: #00bcd4;
