@@ -239,6 +239,11 @@
         transform: translateX(5px);
       }
 
+      /* Force Light theme hover to match other themes */
+      [data-theme="light"] .theme-option:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
       .theme-option.active {
         background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
         color: #fff;
