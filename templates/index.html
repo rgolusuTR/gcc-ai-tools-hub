@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GCC AI Tools Hub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <!-- Logo on Left -->
+      <div class="header-logo">
+        <img src="{{ url_for('static', filename='images/download.png') }}" alt="Thomson Reuters">
+      </div>
+      
+      <!-- Content on Right -->
+      <div class="hero-content">
+        <div class="hero-eyebrow">AI-POWERED SOLUTIONS</div>
+        <h1 class="hero-title">Discover GCC AI Tools</h1>
+        <p class="hero-description">
+          Access a comprehensive suite of AI-powered tools designed to enhance productivity, 
+          streamline workflows, and drive innovation across Thomson Reuters.
+        </p>
+        <a href="#tools" class="hero-cta">
+          Explore all tools
+          <span>→</span>
+        </a>
+      </div>
+      
+      <div class="hero-background">
+        <svg class="network-pattern" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4ade80;stop-opacity:0.6" />
+              <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:0.3" />
+            </linearGradient>
+          </defs>
+          
+          <!-- Curved lines -->
+          <path d="M 100 50 Q 300 100 500 50 T 900 50" stroke="url(#lineGradient)" stroke-width="2" fill="none" opacity="0.6"/>
+          <path d="M 50 150 Q 250 200 450 150 T 850 150" stroke="url(#lineGradient)" stroke-width="2" fill="none" opacity="0.5"/>
+          <path d="M 150 250 Q 350 300 550 250 T 950 250" stroke="url(#lineGradient)" stroke-width="2" fill="none" opacity="0.4"/>
+          <path d="M 80 350 Q 280 400 480 350 T 880 350" stroke="url(#lineGradient)" stroke-width="2" fill="none" opacity="0.5"/>
+          <path d="M 120 450 Q 320 500 520 450 T 920 450" stroke="url(#lineGradient)" stroke-width="2" fill="none" opacity="0.6"/>
+          
+          <!-- Vertical connecting lines -->
+          <line x1="300" y1="100" x2="250" y2="200" stroke="url(#lineGradient)" stroke-width="1.5" opacity="0.4"/>
+          <line x1="500" y1="50" x2="450" y2="150" stroke="url(#lineGradient)" stroke-width="1.5" opacity="0.4"/>
+          <line x1="450" y1="150" x2="350" y2="300" stroke="url(#lineGradient)" stroke-width="1.5" opacity="0.4"/>
+          <line x1="550" y1="250" x2="480" y2="350" stroke="url(#lineGradient)" stroke-width="1.5" opacity="0.4"/>
+          <line x1="480" y1="350" x2="520" y2="450" stroke="url(#lineGradient)" stroke-width="1.5" opacity="0.4"/>
+          
+          <!-- Nodes -->
+          <circle cx="300" cy="100" r="8" fill="#4ade80" opacity="0.8"/>
+          <circle cx="500" cy="50" r="6" fill="#22d3ee" opacity="0.7"/>
+          <circle cx="250" cy="200" r="7" fill="#4ade80" opacity="0.6"/>
+          <circle cx="450" cy="150" r="9" fill="#22d3ee" opacity="0.8"/>
+          <circle cx="350" cy="300" r="6" fill="#4ade80" opacity="0.7"/>
+          <circle cx="550" cy="250" r="8" fill="#22d3ee" opacity="0.8"/>
+          <circle cx="480" cy="350" r="7" fill="#4ade80" opacity="0.7"/>
+          <circle cx="520" cy="450" r="10" fill="#22d3ee" opacity="0.9"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="app-body" id="tools">
+    
+    <!-- Search & Filter Section -->
+    <div class="card search-card">
+      <div class="search-container">
+        <div class="search-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <input type="text" id="search-input" placeholder="Search tools by name, description, or tags..." />
+          <button id="clear-search" class="clear-btn" style="display:none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Filter Pills -->
+    <div class="category-filters">
+      <button class="filter-pill active" data-category="all">
+        <span class="pill-icon">🌟</span>
+        All Tools
+        <span class="pill-count" id="count-all">0</span>
+      </button>
+      {% for category in categories %}
+      <button class="filter-pill" data-category="{{ category.id }}" style="--category-color: {{ category.color }}">
+        <span class="pill-icon">{{ category.icon }}</span>
+        {{ category.name }}
+        <span class="pill-count" id="count-{{ category.id }}">0</span>
+      </button>
+      {% endfor %}
+    </div>
+
+    <!-- Stats Summary -->
+    <div class="stats-summary">
+      <div class="stat-box">
+        <div class="stat-value" id="total-tools">0</div>
+        <div class="stat-label">Total Tools</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="active-tools">0</div>
+        <div class="stat-label">Active</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="categories-count">{{ categories|length }}</div>
+        <div class="stat-label">Categories</div>
+      </div>
+    </div>
+
+    <!-- Tools Grid -->
+    <div class="tools-grid" id="tools-grid">
+      <!-- Tool cards will be dynamically inserted here -->
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" id="no-results" style="display:none;">
+      <div class="no-results-icon">🔍</div>
+      <h3>No tools found</h3>
+      <p>Try adjusting your search or filter criteria</p>
+    </div>
+
+  </div>
+
+  <!-- Tool Card Template -->
+  <template id="tool-card-template">
+    <div class="tool-card" data-category="" data-tags="">
+      <div class="tool-header">
+        <div class="tool-icon-wrapper">
+          <span class="tool-category-icon"></span>
+        </div>
+        <div class="tool-status-badge"></div>
+      </div>
+      <h3 class="tool-name"></h3>
+      <p class="tool-description"></p>
+      <div class="tool-tags"></div>
+      <div class="tool-footer">
+        <a href="#" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <span>Open Tool</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </template>
+
+  <!-- Data passed from Flask -->
+  <script>
+    window.toolsData = {
+      categories: {{ categories|tojson }},
+      tools: {{ tools|tojson }}
+    };
+  </script>
+  
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

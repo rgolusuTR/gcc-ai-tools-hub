@@ -1,0 +1,177 @@
+{
+  "categories": [
+    {
+      "id": "analytics",
+      "name": "Analytics & Reporting",
+      "icon": "📊",
+      "color": "#4f6ef7"
+    },
+    {
+      "id": "content",
+      "name": "Content Management",
+      "icon": "📝",
+      "color": "#10b981"
+    },
+    {
+      "id": "automation",
+      "name": "AI Automation",
+      "icon": "🤖",
+      "color": "#a855f7"
+    },
+    {
+      "id": "quality",
+      "name": "Quality Assurance",
+      "icon": "🔍",
+      "color": "#f59e0b"
+    },
+    {
+      "id": "communication",
+      "name": "Communication Tools",
+      "icon": "📧",
+      "color": "#ec4899"
+    },
+    {
+      "id": "design",
+      "name": "Design & Optimization",
+      "icon": "🎨",
+      "color": "#06b6d4"
+    }
+  ],
+  "tools": [
+    {
+      "id": "page-analytics-notifier",
+      "name": "Page Analytics Notifier",
+      "description": "Automated email notifications for page analytics, expiry tracking, and stakeholder engagement monitoring.",
+      "category": "analytics",
+      "url": "http://localhost:5001",
+      "status": "active",
+      "tags": ["analytics", "email", "monitoring"]
+    },
+    {
+      "id": "siteimprove-misspellings",
+      "name": "Siteimprove Misspellings Dashboard",
+      "description": "Interactive dashboard for tracking and managing website misspellings from Siteimprove reports.",
+      "category": "quality",
+      "url": "http://localhost:5002",
+      "status": "active",
+      "tags": ["quality", "siteimprove", "content"]
+    },
+    {
+      "id": "aem-smart-authoring",
+      "name": "AEM Smart Authoring Assistant",
+      "description": "AI-powered content authoring assistant for Adobe Experience Manager.",
+      "category": "content",
+      "url": "http://localhost:5003",
+      "status": "active",
+      "tags": ["aem", "ai", "content"]
+    },
+    {
+      "id": "email-optimizer",
+      "name": "Email Send Time Optimizer",
+      "description": "AI-driven tool to optimize email send times based on recipient engagement patterns.",
+      "category": "communication",
+      "url": "http://localhost:5004",
+      "status": "active",
+      "tags": ["email", "optimization", "ai"]
+    },
+    {
+      "id": "document-comparison",
+      "name": "Document Comparison Tool",
+      "description": "Compare and analyze differences between document versions with AI-powered insights.",
+      "category": "content",
+      "url": "http://localhost:5005",
+      "status": "active",
+      "tags": ["documents", "comparison", "ai"]
+    },
+    {
+      "id": "chart-dashboard",
+      "name": "Chart Dashboard",
+      "description": "Interactive data visualization and chart generation dashboard.",
+      "category": "analytics",
+      "url": "http://localhost:5006",
+      "status": "active",
+      "tags": ["charts", "visualization", "analytics"]
+    },
+    {
+      "id": "image-optimization",
+      "name": "Image Optimization Tool",
+      "description": "Automated image compression and optimization for web performance.",
+      "category": "design",
+      "url": "http://localhost:5007",
+      "status": "active",
+      "tags": ["images", "optimization", "performance"]
+    },
+    {
+      "id": "qa-audit-tool",
+      "name": "QA Audit Tool",
+      "description": "Comprehensive quality assurance and testing automation platform.",
+      "category": "quality",
+      "url": "http://localhost:5008",
+      "status": "active",
+      "tags": ["qa", "testing", "automation"]
+    },
+    {
+      "id": "gcc-browser-agent",
+      "name": "GCC Browser Agent",
+      "description": "AI-driven browser automation agent for web application testing and workflows.",
+      "category": "automation",
+      "url": "http://localhost:5009",
+      "status": "active",
+      "tags": ["automation", "browser", "ai"]
+    },
+    {
+      "id": "workfront-aem-sync",
+      "name": "Workfront AEM Sync Extension",
+      "description": "Synchronization tool between Workfront and Adobe Experience Manager.",
+      "category": "automation",
+      "url": "http://localhost:5010",
+      "status": "active",
+      "tags": ["workfront", "aem", "sync"]
+    },
+    {
+      "id": "pagespeed-audit",
+      "name": "PageSpeed Audit Tool",
+      "description": "Automated website performance auditing and optimization recommendations.",
+      "category": "quality",
+      "url": "http://localhost:5011",
+      "status": "active",
+      "tags": ["performance", "audit", "optimization"]
+    },
+    {
+      "id": "ai-document-assistant",
+      "name": "AI Document Assistant",
+      "description": "Intelligent document processing and analysis assistant.",
+      "category": "content",
+      "url": "http://localhost:5012",
+      "status": "active",
+      "tags": ["ai", "documents", "assistant"]
+    },
+    {
+      "id": "excel-issue-separator",
+      "name": "Excel Issue Separator",
+      "description": "Automated tool to categorize and separate issues from Excel reports.",
+      "category": "analytics",
+      "url": "http://localhost:5013",
+      "status": "active",
+      "tags": ["excel", "automation", "reporting"]
+    },
+    {
+      "id": "siteimprove-ai-agent",
+      "name": "Siteimprove AI Agent",
+      "description": "AI-powered agent for Siteimprove data analysis and recommendations.",
+      "category": "automation",
+      "url": "http://localhost:5014",
+      "status": "active",
+      "tags": ["siteimprove", "ai", "analysis"]
+    },
+    {
+      "id": "aem-automation-agent",
+      "name": "AEM Automation Agent",
+      "description": "Automated workflows and tasks for Adobe Experience Manager.",
+      "category": "automation",
+      "url": "http://localhost:5015",
+      "status": "active",
+      "tags": ["aem", "automation", "workflows"]
+    }
+  ]
+}
