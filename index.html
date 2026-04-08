@@ -202,8 +202,8 @@
         position: absolute;
         top: calc(100% + 0.5rem);
         right: 0;
-        background: var(--bg-secondary);
-        border: 1px solid var(--border-color);
+        background: #132f4c;
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 15px;
         padding: 0.5rem;
         min-width: 180px;
@@ -230,18 +230,13 @@
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        color: var(--text-primary);
+        color: #ffffff;
         font-size: 0.9rem;
       }
 
       .theme-option:hover {
-        background: var(--bg-card);
+        background: rgba(255, 255, 255, 0.1);
         transform: translateX(5px);
-      }
-
-      /* Force Light theme hover to match other themes */
-      [data-theme="light"] .theme-option:hover {
-        background: rgba(0, 0, 0, 0.1);
       }
 
       .theme-option.active {
