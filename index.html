@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCC AI Tools Hub - Thomson Reuters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .app-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ff6200;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #1976d2;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        /* Search and Filter Section */
+        .controls {
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .controls-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #1976d2;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #ddd;
+            background-color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .filter-btn.active {
+            background-color: #1976d2;
+            color: #fff;
+            border-color: #1976d2;
+        }
+
+        /* Tools Grid */
+        .tools-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .tool-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .tool-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tool-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: #e3f2fd;
+            color: #1976d2;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .controls-content {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="static/images/download.png" alt="Thomson Reuters Logo" class="logo">
+                <h1 class="app-title">GCC AI Tools Hub</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover GCC AI Tools</h1>
+            <p>Explore our comprehensive collection of AI-powered tools designed to enhance productivity and streamline workflows</p>
+        </div>
+    </section>
+
+    <!-- Search and Filter Controls -->
+    <section class="controls">
+        <div class="controls-content">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search tools by name or description...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All Tools</button>
+                <button class="filter-btn" data-category="Content">Content</button>
+                <button class="filter-btn" data-category="Analytics">Analytics</button>
+                <button class="filter-btn" data-category="Development">Development</button>
+                <button class="filter-btn" data-category="Automation">Automation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Grid -->
+    <section class="tools-container">
+        <div class="tools-grid" id="toolsGrid">
+            <!-- Tools will be dynamically inserted here -->
+        </div>
+        <div class="no-results" id="noResults" style="display: none;">
+            No tools found matching your search criteria.
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Thomson Reuters. All rights reserved.</p>
+        <p>GCC AI Tools Hub - Empowering Innovation</p>
+    </footer>
+
+    <script>
+        // Tools data
+        const tools = [
+            {
+                name: "AEM Smart Authoring Assistant",
+                description: "AI-powered content creation assistant for Adobe Experience Manager. Helps authors create high-quality content with intelligent suggestions and automated workflows.",
+                category: "Content",
+                icon: "✍️",
+                url: "#"
+            },
+            {
+                name: "Page Analytics Notifier",
+                description: "Automated system for monitoring page performance and sending notifications about low engagement or expired content to stakeholders.",
+                category: "Analytics",
+                icon: "📊",
+                url: "#"
+            },
+            {
+                name: "Siteimprove Misspellings Dashboard",
+                description: "Comprehensive dashboard for tracking and managing spelling errors across your website using Siteimprove data.",
+                category: "Content",
+                icon: "🔍",
+                url: "#"
+            },
+            {
+                name: "GCC Browser Agent",
+                description: "Intelligent browser automation agent for testing and quality assurance workflows.",
+                category: "Automation",
+                icon: "🤖",
+                url: "#"
+            },
+            {
+                name: "Document Comparison Tool",
+                description: "Advanced AI-powered tool for comparing documents and highlighting differences with intelligent analysis.",
+                category: "Content",
+                icon: "📄",
+                url: "#"
+            },
+            {
+                name: "Email Send Time Optimizer",
+                description: "ML-based tool that analyzes recipient behavior to determine optimal email send times for maximum engagement.",
+                category: "Analytics",
+                icon: "📧",
+                url: "#"
+            },
+            {
+                name: "Image Optimization Tool",
+                description: "Automated image optimization and compression tool to improve website performance and loading times.",
+                category: "Development",
+                icon: "🖼️",
+                url: "#"
+            },
+            {
+                name: "PageSpeed Audit Tool",
+                description: "Comprehensive website performance auditing tool with actionable recommendations for improvement.",
+                category: "Analytics",
+                icon: "⚡",
+                url: "#"
+            },
+            {
+                name: "QA Audit Tool",
+                description: "Automated quality assurance tool for comprehensive website testing and issue detection.",
+                category: "Development",
+                icon: "✅",
+                url: "#"
+            },
+            {
+                name: "Siteimprove AI Agent",
+                description: "AI-powered agent for automating Siteimprove workflows and generating insights from accessibility and SEO data.",
+                category: "Analytics",
+                icon: "🎯",
+                url: "#"
+            },
+            {
+                name: "Workfront AEM Sync Extension",
+                description: "Browser extension for seamless synchronization between Workfront project management and Adobe Experience Manager.",
+                category: "Automation",
+                icon: "🔄",
+                url: "#"
+            },
+            {
+                name: "AI Document Assistant",
+                description: "Intelligent assistant for document analysis, summarization, and information extraction using advanced NLP.",
+                category: "Content",
+                icon: "📚",
+                url: "#"
+            }
+        ];
+
+        // State
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        // Render tools
+        function renderTools() {
+            const toolsGrid = document.getElementById('toolsGrid');
+            const noResults = document.getElementById('noResults');
+            
+            const filteredTools = tools.filter(tool => {
+                const matchesCategory = currentCategory === 'all' || tool.category === currentCategory;
+                const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                    tool.description.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filteredTools.length === 0) {
+                toolsGrid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            toolsGrid.style.display = 'grid';
+            noResults.style.display = 'none';
+
+            toolsGrid.innerHTML = filteredTools.map(tool => `
+                <div class="tool-card" onclick="window.location.href='${tool.url}'">
+                    <div class="tool-header">
+                        <div class="tool-icon">${tool.icon}</div>
+                        <h3 class="tool-title">${tool.name}</h3>
+                    </div>
+                    <p class="tool-description">${tool.description}</p>
+                    <span class="tool-category">${tool.category}</span>
+                </div>
+            `).join('');
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderTools();
+        });
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentCategory = e.target.dataset.category;
+                renderTools();
+            });
+        });
+
+        // Initial render
+        renderTools();
+    </script>
+</body>
+</html>
