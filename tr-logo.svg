@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <defs>
+    <style>
+      .tr-text { fill: #ff6200; font-family: Arial, sans-serif; font-weight: bold; }
+    </style>
+  </defs>
+  <text x="10" y="35" class="tr-text" font-size="20">THOMSON REUTERS</text>
+</svg>
